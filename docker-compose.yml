@@ -1,0 +1,9 @@
+name: mongo-backend
+services:
+  mongodb:
+    container_name: micro-mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
