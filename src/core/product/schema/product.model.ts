@@ -1,12 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+import { uuid } from 'uuid';
 
 export type ProductDocument = HydratedDocument<Product>;
 
 @Schema()
 export class Product {
-  @Prop()
-  id: string;
+  @Prop({ default: uuid })
+  productId: string;
 
   @Prop()
   title: string;
