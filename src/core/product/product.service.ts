@@ -15,16 +15,22 @@ export class ProductService {
     return this.productModel.create(createProductDto);
   }
 
-  findAll() {
-    return this.productModel.countDocuments().exec();
+  async findAll() {
+    return await this.productModel.find().exec();
   }
 
   findOne(id: string) {
     return `This action returns a #${id} product`;
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+  update(id: string, updateProductDto: UpdateProductDto) {
+    return this.productModel.findByIdAndUpdate(
+      {
+        productId: id,
+      },
+      updateProductDto,
+      { new: true },
+    );
   }
 
   remove(id: number) {
